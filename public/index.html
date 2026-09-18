@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">   
+    <title>Pharmacy Guard | Operations</title>
+</head>
+<body>
+
+    <div class="card" id="loginSection">
+        <h2>System Login</h2>
+        <form id="loginForm">
+            <label>Username:</label>
+            <input type="text" id="loginUser" required>
+            <label>Password:</label>
+            <input type="password" id="loginPass" required>
+            <button type="submit">Authenticate</button>
+        </form>
+       <div id="loginAlert" class="alert-banner hidden">
+         <span class="alert-icon">⚠️</span>
+         <div id="alertMessage" class="alert-text"></div>
+       </div>
+    </div>
+    <div></div>
+
+    <div class="card hidden" id="salesSection">
+        <div class="header-bar">
+            <h2>Point of Sale Terminal</h2>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+        <form id="salesForm">
+            <label>Product ID:</label>
+            <input type="number" id="sellProductId" required>
+            <label>Quantity to Sell:</label>
+            <input type="number" id="sellQuantity" required>
+            <button type="submit" class="sell-btn">Record Sale</button>
+        </form>
+        <p id="salesStatus" style="font-weight: bold; margin-top: 10px;"></p>
+    </div>
+    <div class="card hidden" id="inventorySection">
+        <h2>Live Inventory Feed</h2>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 15px; text-align: left;">
+            <thead>
+                <tr style="border-bottom: 2px solid #eee; color: #666;">
+                    <th style="padding: 8px;">ID</th>
+                    <th style="padding: 8px;">Product</th>
+                    <th style="padding: 8px;">Price</th>
+                    <th style="padding: 8px;">Stock</th>
+                </tr>
+            </thead>
+            <tbody id="inventoryBody">
+                </tbody>
+        </table>
+    </div>
+
+    <div class="card hidden" id="auditSection">
+        <h2>Stock Audit (Admin)</h2>
+        <form id="auditForm">
+            <label>Product ID:</label>
+            <input type="number" id="productId" required>
+            <label>Physical Count (On Shelf):</label>
+            <input type="number" id="physicalCount" required>
+            <button type="submit">Run Delta-Check</button>
+        </form>
+        <div id="auditResult" class="result-box">
+            <h3 id="statusText"></h3>
+            <p><strong>Expected Stock:</strong> <span id="expectedStock"></span></p>
+            <p><strong>Actual Count:</strong> <span id="actualCount"></span></p>
+            <p><strong>Leakage (Missing):</strong> <span id="leakageAmount"></span></p>
+        </div>
+    </div>
+    <div id="error-popup"></div>
+    <script src="script.js">
+    </script>
+</body>
+</html>
